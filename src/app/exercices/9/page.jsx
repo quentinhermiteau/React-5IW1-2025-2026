@@ -1,6 +1,6 @@
 "use client";
 
-import { createContext } from "react";
+import { createContext, useContext, useState } from "react";
 
 const authContext = createContext({
   isAuthenticated: false,
@@ -9,18 +9,25 @@ const authContext = createContext({
 });
 
 const AuthProvider = ({ children }) => {
-  const isAuthenticated = false;
+  const [isAuthenticated, setAuthenticated] = useState(false);
 
-  const login = () => {};
+  const login = () => {
+    setAuthenticated(true);
+  };
 
-  const logout = () => {};
+  const logout = () => {
+    setAuthenticated(false);
+  };
 
-  return <authContext.Provider>{children}</authContext.Provider>;
+  return (
+    <authContext.Provider value={{ isAuthenticated, login, logout }}>
+      {children}
+    </authContext.Provider>
+  );
 };
 
 function NavBar() {
-  const logout = () => {};
-  const isAuthenticated = false;
+  const { isAuthenticated, logout } = useContext(authContext);
 
   return (
     <nav>
@@ -34,7 +41,7 @@ function NavBar() {
 }
 
 function LoginForm() {
-  const login = () => {};
+  const { login } = useContext(authContext);
 
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -84,7 +91,7 @@ function Dashboard() {
 }
 
 function Main() {
-  const isAuthenticated = false;
+  const { isAuthenticated } = useContext(authContext);
 
   return <main>{isAuthenticated ? <Dashboard /> : <LoginForm />}</main>;
 }
