@@ -1,3 +1,4 @@
+import { ThemeProvider } from "@/contexts/ThemeProvider";
 import localFont from "next/font/local";
 import "./globals.css";
 import Navbar from "./Navbar";
@@ -25,8 +26,10 @@ export default function RootLayout({ children }) {
         id="container"
         className={`${geistSans.variable} ${geistMono.variable}`}
       >
-        <Navbar />
-        <div id="content">{children}</div>
+        <ThemeProvider>
+          <Navbar />
+          <div id="content">{children}</div>
+        </ThemeProvider>
       </body>
     </html>
   );

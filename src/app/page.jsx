@@ -1,3 +1,11 @@
+"use client";
+
+import { useContext } from "react";
+
+import { themeContext } from "@/contexts/ThemeProvider";
+
 export default function Home() {
-  return <div></div>;
+  const { theme } = useContext(themeContext);
+
+  return <div>{theme}</div>;
 }

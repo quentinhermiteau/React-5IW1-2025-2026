@@ -1,3 +1,8 @@
+"use client";
+
+import { themeContext } from "@/contexts/ThemeProvider";
+import { useContext } from "react";
+
 function Link({ exercice }) {
   return (
     <li style={{ padding: "5px 0" }}>
@@ -7,6 +12,8 @@ function Link({ exercice }) {
 }
 
 export default function Navbar() {
+  const { theme, setTheme } = useContext(themeContext);
+
   const themes = [
     {
       name: "Intro",
@@ -32,6 +39,10 @@ export default function Navbar() {
 
   return (
     <div id="navbar">
+      <select value={theme} onChange={(e) => setTheme(e.target.value)}>
+        <option value={"light"}>Light</option>
+        <option value={"dark"}>Dark</option>
+      </select>
       <h1>Exercices</h1>
       <ul>
         {themes.map(({ name, exercices }) => (
