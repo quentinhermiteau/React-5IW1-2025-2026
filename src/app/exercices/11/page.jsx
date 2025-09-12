@@ -30,8 +30,6 @@ export default function Counter() {
   const handleUpdateStep = (step) =>
     dispatch({ action: "setStep", value: step });
 
-  console.log(state);
-
   return (
     <main>
       <div id="notice">

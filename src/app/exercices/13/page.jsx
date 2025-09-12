@@ -56,8 +56,6 @@ export default function CounterWithUndoRedo() {
   const handleUndo = () => dispatch({ type: "undo" });
   const handleRedo = () => dispatch({ type: "redo" });
 
-  console.log(state);
-
   return (
     <div>
       <div id="notice">
