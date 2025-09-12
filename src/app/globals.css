@@ -30,6 +30,8 @@ a {
 
 #notice {
   margin-bottom: 20px;
+  background-color: lightgray;
+  padding: 10px;
 }
 
 button {
